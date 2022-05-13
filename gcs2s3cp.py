@@ -31,7 +31,7 @@ def main(args):
         aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
     )
     source = GSFile(key=args.gs_file_source, name=args.gs_file_source)
-    chunk_size = calculate_multipart_chunksize(source.size())
+    chunk_size = calculate_multipart_chunksize(source.size)
     transfer_config = TransferConfig(multipart_chunksize=chunk_size)
     s3_uri = args.s3_destination_bucket + args.s3_destination_key
     print(f"Uploading {args.gs_file_source} to {s3_uri}")
